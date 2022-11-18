@@ -5,23 +5,21 @@ namespace Creational.Builder.Builders
 {
     public abstract class CarBuilderBase
     {
-        protected CarBase _car = default!;
-
-        public CarBase Car { get => _car; }
+        protected Car Car { get; set; } = default!;
 
         public void BuilBody(BodyType bodyType)
         {
-            _car.Body= bodyType;
+            Car.Body = bodyType;
         }
 
         public void BuildPainting(Color color)
         {
-            _car.Painting= color;
+            Car.Painting= color;
         }
 
-        public CarBase GetCar() 
+        public Car GetCar() 
         { 
-            return _car;
+            return Car;
         }
     }
 }
