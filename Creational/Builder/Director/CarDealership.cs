@@ -1,6 +1,6 @@
 ﻿using Creational.Builder.Builders;
 using Creational.Builder.Enums;
-using Creational.Builder.Products;
+using Creational.Builder.Product;
 
 namespace Creational.Director.Builder
 {

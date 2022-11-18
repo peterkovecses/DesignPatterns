@@ -1,5 +1,5 @@
 ﻿using Creational.Builder.Enums;
-using Creational.Builder.Products;
+using Creational.Builder.Product;
 
 namespace Creational.Builder.Builders
 {

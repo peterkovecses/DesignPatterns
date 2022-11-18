@@ -1,6 +1,6 @@
 ﻿using Creational.Builder.Enums;
 
-namespace Creational.Builder.Products
+namespace Creational.Builder.Product
 {
     public class Car
     {
