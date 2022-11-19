@@ -26,10 +26,10 @@
 
     public abstract class OrderDecoratorBase : IOrder
     {
-        protected readonly Order _order;
+        protected readonly IOrder _order;
         protected const decimal ExpressExtraCharge = 15;
 
-        public OrderDecoratorBase(Order order)
+        public OrderDecoratorBase(IOrder order)
         {
             _order = order;
         }
