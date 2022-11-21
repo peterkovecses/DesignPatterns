@@ -1,6 +1,6 @@
-﻿using Structural.Decorator.IComponent;
+﻿using Structural.Decorator.Example1.IComponent;
 
-namespace Structural.Decorator.Component
+namespace Structural.Decorator.Example1.Component
 {
     public class DataService : IDataService
     {

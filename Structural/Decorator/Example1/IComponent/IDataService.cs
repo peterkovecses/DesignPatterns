@@ -1,4 +1,4 @@
-﻿namespace Structural.Decorator.IComponent
+﻿namespace Structural.Decorator.Example1.IComponent
 {
     public interface IDataService
     {

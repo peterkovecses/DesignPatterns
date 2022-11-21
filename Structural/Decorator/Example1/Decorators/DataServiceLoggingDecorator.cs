@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
-using Structural.Decorator.IComponent;
+using Structural.Decorator.Example1.IComponent;
 using System.Diagnostics;
 
-namespace Structural.Decorator.Decorators
+namespace Structural.Decorator.Example1.Decorators
 {
     public class DataServiceLoggingDecorator : DataServiceDecoratorBase
     {

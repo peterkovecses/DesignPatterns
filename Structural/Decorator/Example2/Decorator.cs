@@ -1,4 +1,4 @@
-﻿namespace Structural.Decorator2
+﻿namespace Structural.Decorator.Example2
 {
     public interface IOrder
     {
@@ -6,7 +6,7 @@
 
         decimal GetSubtotal();
         decimal GetShippingCost();
-        decimal GetTotalAmmount();        
+        decimal GetTotalAmmount();
     }
 
     public class Order : IOrder

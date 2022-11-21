@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using Structural.Decorator.IComponent;
+using Structural.Decorator.Example1.IComponent;
 
-namespace Structural.Decorator.Decorators
+namespace Structural.Decorator.Example1.Decorators
 {
     public abstract class DataServiceDecoratorBase : IDataService
     {
