@@ -7,8 +7,11 @@ namespace Structural.Decorator.Decorators
 {
     public class DataServiceLoggingDecorator : DataServiceDecoratorBase
     {
-        public DataServiceLoggingDecorator(IDataService dataService, IMemoryCache memoryCache) : base(dataService, memoryCache)
+        private readonly ILogger _logger;
+
+        public DataServiceLoggingDecorator(IDataService dataService, ILogger logger) : base(dataService)
         {
+            _logger = logger;
         }
 
         public override List<int> GetData()

@@ -6,8 +6,11 @@ namespace Structural.Decorator.Decorators
 
     public class DataServiceCachingDecorator : DataServiceDecoratorBase
     {
-        public DataServiceCachingDecorator(IDataService dataService, IMemoryCache memoryCache) : base(dataService, memoryCache)
+        private readonly IMemoryCache _memoryCache;
+
+        public DataServiceCachingDecorator(IDataService dataService, IMemoryCache memoryCache) : base(dataService)
         {
+            _memoryCache = memoryCache;
         }
 
         public override List<int> GetData()
