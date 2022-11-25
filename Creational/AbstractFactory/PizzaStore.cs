@@ -17,6 +17,7 @@ namespace Creational.AbstractFactory
         public IPizza OrderPizza(IList<string> toppings)
         {
             var pizza = _pizzaFactory.CreatePizza(toppings);
+            // Bake pizza
             // Cut pizza
             // Box pizza
             return pizza;

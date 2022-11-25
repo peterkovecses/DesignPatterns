@@ -7,16 +7,17 @@ namespace Creational.FactoryMethod.Factories
         public IPizza OrderPizza(IList<string> toppings)
         {
             IPizza pizza = CreatePizza(toppings);
+            // Bake pizza
             // Cut pizza
             // Box pizza
             return pizza;
         }
-        public abstract IPizza CreatePizza(IList<string> toppings);
+        protected abstract IPizza CreatePizza(IList<string> toppings);
     }
 
     public class NormalPizzaStore : PizzaFactory
     {
-        public override IPizza CreatePizza(IList<string> toppings)
+        protected override IPizza CreatePizza(IList<string> toppings)
         {
             return new NormalPizza(toppings);
         }
@@ -24,14 +25,14 @@ namespace Creational.FactoryMethod.Factories
 
     public class NewYorkPizzaStore : PizzaFactory
     {
-        public override IPizza CreatePizza(IList<string> toppings)
+        protected override IPizza CreatePizza(IList<string> toppings)
         {
             return new NewYorkPizza(toppings);
         }
     }
     public class ChicagoPizzaStore : PizzaFactory
     {
-        public override IPizza CreatePizza(IList<string> toppings)
+        protected override IPizza CreatePizza(IList<string> toppings)
         {
             return new ChicagoPizza(toppings);
         }

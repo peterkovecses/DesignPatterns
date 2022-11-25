@@ -1,5 +1,4 @@
-﻿using Creational.Builder.Enums;
-using Creational.Builder.Product;
+﻿using Creational.Builder.Product;
 
 namespace Creational.Builder.Builders
 {
@@ -7,7 +6,7 @@ namespace Creational.Builder.Builders
     {
         public BaseEquipmentCarBuilder()
         {
-            Car = new Car(EntertainmentSystemType.None, UpholsteryType.Fabric);
+            Car = new BaseEquipmentCar();
         }
     }
 }
