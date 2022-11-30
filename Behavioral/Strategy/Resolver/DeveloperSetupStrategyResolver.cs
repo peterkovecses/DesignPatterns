@@ -6,10 +6,10 @@ namespace Behavioral.Strategy.Resolver
     {
         public IDeveloperSetupStrategy GetStrategy(IDeveloper developer)
         {
-            return developer.GetType().Name switch
+            return developer switch
             {
-                nameof(MediorDeveloper) => new MediorDeveloperSetupStrategy(),
-                nameof(SeniorDeveloper) => new SeniorDeveloperSetupStrategy(),
+                MediorDeveloper => new MediorDeveloperSetupStrategy(),
+                SeniorDeveloper => new SeniorDeveloperSetupStrategy(),
                 _ => new JuniorDeveloperSetupStrategy()
             };
         }
