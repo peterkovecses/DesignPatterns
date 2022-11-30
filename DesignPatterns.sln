@@ -5,12 +5,14 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Creational", "Creational\Creational.csproj", "{28FCBAC8-CEF3-4402-BB00-287F98471EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structural", "Structural\Structural.csproj", "{47E4BDC1-8D64-4AA1-B2A2-3DF9C6F20E3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Structural", "Structural\Structural.csproj", "{47E4BDC1-8D64-4AA1-B2A2-3DF9C6F20E3A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{33A7FD07-403C-4887-BABC-87413E0BB86E}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Behavioral", "Behavioral\Behavioral.csproj", "{4E5152B3-6624-4934-9884-8E0216241C77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{47E4BDC1-8D64-4AA1-B2A2-3DF9C6F20E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47E4BDC1-8D64-4AA1-B2A2-3DF9C6F20E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47E4BDC1-8D64-4AA1-B2A2-3DF9C6F20E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E5152B3-6624-4934-9884-8E0216241C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5152B3-6624-4934-9884-8E0216241C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5152B3-6624-4934-9884-8E0216241C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5152B3-6624-4934-9884-8E0216241C77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
