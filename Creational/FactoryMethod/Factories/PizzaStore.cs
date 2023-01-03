@@ -2,37 +2,34 @@
 
 namespace Creational.FactoryMethod.Factories
 {
-    public abstract class PizzaFactory
+    public interface IPizzaStore
     {        
-        public IPizza OrderPizza(IList<string> toppings)
-        {
-            IPizza pizza = CreatePizza(toppings);
-            // Bake pizza
-            // Cut pizza
-            // Box pizza
-            return pizza;
-        }
-        protected abstract IPizza CreatePizza(IList<string> toppings);
+        IPizza OrderPizza(IList<string> toppings, DoughType dough);
     }
 
-    public class NormalPizzaStore : PizzaFactory
+    public class PizzaStore : IPizzaStore
     {
-        protected override IPizza CreatePizza(IList<string> toppings)
+        public IPizza OrderPizza(IList<string> toppings, DoughType dough)
+        {
+            return dough switch
+            {
+                DoughType.Thin => CreateNewYorkPizza(toppings),
+                DoughType.DeepDish => CreateChicagoPizza(toppings),
+                _ => CreateNormalPizza(toppings)
+            };
+        }
+
+        private static NormalPizza CreateNormalPizza(IList<string> toppings)
         {
             return new NormalPizza(toppings);
         }
-    }
 
-    public class NewYorkPizzaStore : PizzaFactory
-    {
-        protected override IPizza CreatePizza(IList<string> toppings)
+        private static NewYorkPizza CreateNewYorkPizza(IList<string> toppings)
         {
             return new NewYorkPizza(toppings);
         }
-    }
-    public class ChicagoPizzaStore : PizzaFactory
-    {
-        protected override IPizza CreatePizza(IList<string> toppings)
+
+        private static ChicagoPizza CreateChicagoPizza(IList<string> toppings)
         {
             return new ChicagoPizza(toppings);
         }
