@@ -1,53 +1,105 @@
-﻿using Creational.AbstractFactory.Factories;
-using Creational.AbstractFactory.Products;
-
-namespace Creational.AbstractFactory
+﻿namespace Creational.AbstractFactory
 {
-    public class PizzaStore
+    public interface IPizza
     {
-        private readonly PizzaFactory _pizzaFactory;
-        private readonly CoffeeFactory _coffeeFactory;
+        string GetDescription();
+    }
 
-        public PizzaStore(PizzaDoughType pizzaDoughType, CoffeeStyle coffeeStyle)
+    public class ItalianPizza : IPizza
+    {
+        public string GetDescription()
         {
-            _pizzaFactory = CreatePizzaFactory(pizzaDoughType);
-            _coffeeFactory = CreateCoffeeFactory(coffeeStyle);
+            return "Italian Pizza";
+        }
+    }
+
+    public class AmericanPizza : IPizza
+    {
+        public string GetDescription()
+        {
+            return "American Pizza";
+        }
+    }
+
+    public interface ICoffee
+    {
+        string GetDescription();
+    }
+
+    public class ItalianCofee : ICoffee
+    {
+        public string GetDescription()
+        {
+            return "Italian Cofee";
+        }
+    }
+
+    public class AmericanCofee : ICoffee
+    {
+        public string GetDescription()
+        {
+            return "American Cofee";
+        }
+    }
+
+    public interface IFoodFactory
+    {
+        IPizza CreatePizza();
+        ICoffee CreateCoffee();
+    }
+
+    public class ItalianFoodFactory : IFoodFactory
+    {
+        public IPizza CreatePizza()
+        {
+            return new ItalianPizza();
         }
 
-        public IPizza OrderPizza(IList<string> toppings)
+        public ICoffee CreateCoffee()
         {
-            var pizza = _pizzaFactory.CreatePizza(toppings);
-            // Bake pizza
-            // Cut pizza
-            // Box pizza
-            return pizza;
+            return new ItalianCofee();
+        }
+    }
+
+    public class AmericanFoodFactory : IFoodFactory
+    {
+        public IPizza CreatePizza()
+        {
+            return new AmericanPizza();
+        }
+
+        public ICoffee CreateCoffee()
+        {
+            return new AmericanCofee();
+        }
+    }
+
+    // Client code:
+    public class FoodOrderService
+    {
+        private readonly IFoodFactory _foodFactory;
+
+        public FoodOrderService(IFoodFactory foodFactory)
+        {
+            _foodFactory = foodFactory;
+        }
+
+        public IPizza OrderPizza()
+        {
+            return _foodFactory.CreatePizza();
         }
 
         public ICoffee OrderCoffee()
         {
-            var coffee = _coffeeFactory.CreateCoffee();
-            // Box coffee
-            return coffee;
-        }
-
-        private static PizzaFactory CreatePizzaFactory(PizzaDoughType pizzaDoughType)
-        {
-            return pizzaDoughType switch
-            {
-                PizzaDoughType.Thin => new NewYorkPizzaFactory(),
-                PizzaDoughType.DeepDish => new ChicagoPizzaFactory(),
-                _ => new NormalPizzaFactory()
-            };
-        }
-
-        private static CoffeeFactory CreateCoffeeFactory(CoffeeStyle coffeeStyle) 
-        {
-            return coffeeStyle switch
-            {
-                CoffeeStyle.American => new AmericanCoffeeFactory(),
-                CoffeeStyle.Italian => new ItalianCoffeeFactory(),
-                _ => new NormalCoffeeFactory()
-            };
-        }
+            return _foodFactory.CreateCoffee();
+        }        
     }
+
+    // Használat:
+    //var foodFactory = new ItalianFoodFactory();
+    //var foodOrderService = new FoodOrderService(foodFactory);
+    //IPizza pizza = foodOrderService.OrderPizza();
+    //ICoffee coffee = foodOrderService.OrderCoffee();
+    //Console.WriteLine(pizza.GetDescription()); // Italian Pizza
+    //Console.WriteLine(coffee.GetDescription()); // Italian Cofee
 }

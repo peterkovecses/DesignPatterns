@@ -6,7 +6,6 @@
 
         public static Pizza CreateChicagoStylePizza => new() { DoughType = PizzaDoughType.DeepDish };
         public static Pizza CreateNewYorkStylePizza => new() { DoughType = PizzaDoughType.Thin };
-
     }
 
     public enum PizzaDoughType
