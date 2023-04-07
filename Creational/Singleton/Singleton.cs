@@ -1,6 +1,6 @@
 ﻿namespace Creational.Singleton
 {
-    public class Singleton
+    public sealed class Singleton
     {
         private static readonly Lazy<Singleton> _lazy =
             new(() => new Singleton());
