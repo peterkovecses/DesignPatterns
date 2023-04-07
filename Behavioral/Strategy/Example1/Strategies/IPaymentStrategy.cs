@@ -1,4 +1,4 @@
-﻿namespace Behavioral.Strategy.Strategies
+﻿namespace Behavioral.Strategy.Example1.Strategies
 {
     public interface IDeveloperSetupStrategy
     {

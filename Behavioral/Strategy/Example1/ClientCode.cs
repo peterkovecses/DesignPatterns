@@ -1,6 +1,6 @@
-﻿using Behavioral.Strategy.Resolver;
+﻿using Behavioral.Strategy.Example1.Resolver;
 
-namespace Behavioral.Strategy
+namespace Behavioral.Strategy.Example1
 {
     public class HrService
     {
@@ -15,7 +15,7 @@ namespace Behavioral.Strategy
         }
 
         public void HireDeveloper(IDeveloper developer)
-        {            
+        {
             var strategy = _developerSetupStrategyResolver.GetStrategy(developer);
             strategy.SetDeveloper(developer, DeveloperBaseSalary);
             Developers.Add(developer);

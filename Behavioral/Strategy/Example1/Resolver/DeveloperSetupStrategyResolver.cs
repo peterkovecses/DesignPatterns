@@ -1,6 +1,6 @@
-﻿using Behavioral.Strategy.Strategies;
+﻿using Behavioral.Strategy.Example1.Strategies;
 
-namespace Behavioral.Strategy.Resolver
+namespace Behavioral.Strategy.Example1.Resolver
 {
     public class DeveloperSetupStrategyResolver
     {
