@@ -42,32 +42,42 @@
         }
     }
 
-    public interface IFoodFactory
+    public interface IPizzaFactory
     {
         IPizza CreatePizza();
+    }
+
+    public interface ICoffeeFactory
+    {
         ICoffee CreateCoffee();
     }
 
-    public class ItalianFoodFactory : IFoodFactory
+    public class ItalianPizzaFactory : IPizzaFactory
     {
         public IPizza CreatePizza()
         {
             return new ItalianPizza();
         }
+    }
 
+    public class ItalianCoffeeFactory : ICoffeeFactory
+    {
         public ICoffee CreateCoffee()
         {
             return new ItalianCofee();
         }
     }
 
-    public class AmericanFoodFactory : IFoodFactory
+    public class AmericanPizzaFactory : IPizzaFactory
     {
         public IPizza CreatePizza()
         {
             return new AmericanPizza();
         }
+    }
 
+    public class AmericanCoffeeFactory : ICoffeeFactory
+    {
         public ICoffee CreateCoffee()
         {
             return new AmericanCofee();
@@ -75,31 +85,34 @@
     }
 
     // Client code:
-    public class FoodOrderService
+    public class PizzaStore
     {
-        private readonly IFoodFactory _foodFactory;
+        private readonly IPizzaFactory _pizzaFactory;
+        private readonly ICoffeeFactory _coffeeFactory;
 
-        public FoodOrderService(IFoodFactory foodFactory)
+        public PizzaStore(IPizzaFactory pizzaFactory, ICoffeeFactory coffeeFactory)
         {
-            _foodFactory = foodFactory;
+            _pizzaFactory = pizzaFactory;
+            _coffeeFactory = coffeeFactory;
         }
 
         public IPizza OrderPizza()
         {
-            return _foodFactory.CreatePizza();
+            return _pizzaFactory.CreatePizza();
         }
 
         public ICoffee OrderCoffee()
         {
-            return _foodFactory.CreateCoffee();
+            return _coffeeFactory.CreateCoffee();
         }        
     }
 
     // Használat:
-    //var foodFactory = new ItalianFoodFactory();
-    //var foodOrderService = new FoodOrderService(foodFactory);
-    //IPizza pizza = foodOrderService.OrderPizza();
-    //ICoffee coffee = foodOrderService.OrderCoffee();
+    //var pizzaFactory = new ItalianPizzaFactory();
+    //var coffeFactory = new AmericanCoffeeFactory();
+    //var pizzaStore = new PizzaStore(pizzaFactory, coffeFactory);
+    //IPizza pizza = pizzaStore.OrderPizza();
+    //ICoffee coffee = pizzaStore.OrderCoffee();
     //Console.WriteLine(pizza.GetDescription()); // Italian Pizza
-    //Console.WriteLine(coffee.GetDescription()); // Italian Cofee
+    //Console.WriteLine(coffee.GetDescription()); // American Cofee
 }
