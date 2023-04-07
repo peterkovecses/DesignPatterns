@@ -3,9 +3,7 @@ using Structural.Adapter.ITarget;
 
 namespace Structural.Adapter.Adapter
 {
-    /// <summary>
-    /// Class fitting example
-    /// </summary>
+    // Adapter - Class fitting example
     public class HybridCar : Car, IElectricCar
     {
         public void Charge()

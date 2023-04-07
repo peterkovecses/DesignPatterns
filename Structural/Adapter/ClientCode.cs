@@ -8,7 +8,7 @@ namespace Structural.Adapter
     {
         public static void Refuel(Car car)
         {
-            car.Refuel();
+            Car.Refuel();
         }
     }
 
