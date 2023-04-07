@@ -5,7 +5,7 @@ namespace Creational.Builder.Builders
 {
     public abstract class CarBuilderBase
     {
-        protected Car Car { get; set; } = default!;
+        protected CarBase Car { get; set; } = default!;
 
         public void BuilBody(BodyType bodyType)
         {
@@ -17,7 +17,7 @@ namespace Creational.Builder.Builders
             Car.Painting= color;
         }
 
-        public Car GetCar() 
+        public CarBase GetCar() 
         { 
             return Car;
         }

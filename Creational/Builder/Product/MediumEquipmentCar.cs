@@ -2,7 +2,7 @@
 
 namespace Creational.Builder.Product
 {
-    public class MediumEquipmentCar : Car
+    public class MediumEquipmentCar : CarBase
     {
         public override EntertainmentSystemType EntertainmentSystem => EntertainmentSystemType.Radio;
         public override UpholsteryType Upholstery => UpholsteryType.TextileLeather;

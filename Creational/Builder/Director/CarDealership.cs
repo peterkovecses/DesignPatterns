@@ -6,7 +6,7 @@ namespace Creational.Director.Builder
 {
     public class CarDealership
     {
-        public static Car OrderCar(CarBuilderBase carBuilder, BodyType bodyType, Color color)
+        public static CarBase OrderCar(CarBuilderBase carBuilder, BodyType bodyType, Color color)
         {
             carBuilder.BuilBody(bodyType);
             carBuilder.BuildPainting(color);

@@ -2,7 +2,7 @@
 
 namespace Creational.Builder.Product
 {
-    public abstract class Car
+    public abstract class CarBase
     {
         public virtual EntertainmentSystemType EntertainmentSystem { get; }
         public virtual UpholsteryType Upholstery { get; }
