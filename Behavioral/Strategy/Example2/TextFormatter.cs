@@ -40,14 +40,18 @@
             return _formatter.Format(input);
         }
     }
+    
+    public class Test
+    {
+        public static void UsePattern()
+        {
+            string sampleText = "Példa Szöveg";
 
-    // Használat:
-    //string sampleText = "Példa Szöveg";
+            var formatter = new TextFormatter(new UpperCaseFormatter());
+            Console.WriteLine("Nagybetűs formázás: " + formatter.Format(sampleText));
 
-    //var formatter = new TextFormatter(new UpperCaseFormatter());
-    //Console.WriteLine("Nagybetűs formázás: " + formatter.Format(sampleText));
-
-    //formatter.SetFormatter(new LowerCaseFormatter());
-    //Console.WriteLine("Kisbetűs formázás: " + formatter.Format(sampleText));
-
+            formatter.SetFormatter(new LowerCaseFormatter());
+            Console.WriteLine("Kisbetűs formázás: " + formatter.Format(sampleText));
+        }
+    }
 }

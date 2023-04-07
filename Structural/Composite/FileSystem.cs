@@ -43,28 +43,33 @@
             Console.WriteLine(new String('-', level) + Name);
         }
     }
+    
+    public class Test
+    {
+        public static void UsePattern()
+        {
+            Folder root = new Folder("Root");
+            Folder documents = new Folder("Documents");
+            Folder pictures = new Folder("Pictures");
+            File file1 = new File("file1.txt");
+            File file2 = new File("file2.txt");
+            File picture1 = new File("picture1.jpg");
 
-    // Használat:
-    //Folder root = new Folder("Root");
-    //Folder documents = new Folder("Documents");
-    //Folder pictures = new Folder("Pictures");
-    //File file1 = new File("file1.txt");
-    //File file2 = new File("file2.txt");
-    //File picture1 = new File("picture1.jpg");
+            root.Add(documents);
+            documents.Add(file1);
+            documents.Add(file2);
+            root.Add(pictures);
+            pictures.Add(picture1);
 
-    //root.Add(documents);
-    //documents.Add(file1);
-    //documents.Add(file2);
-    //root.Add(pictures);
-    //pictures.Add(picture1);
+            root.Display();
 
-    //root.Display();
-
-    // Eredmény
-    //-Root
-    //--Documents
-    //---file1.txt
-    //---file2.txt
-    //--Pictures
-    //---picture1.jpg
+            // Eredmény
+            //-Root
+            //--Documents
+            //---file1.txt
+            //---file2.txt
+            //--Pictures
+            //---picture1.jpg
+        }
+    }
 }
