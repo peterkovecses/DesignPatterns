@@ -21,11 +21,11 @@
         }
     }
 
-    public class TextFormatter
+    public class TextPrinter
     {
         private ITextFormatter _formatter;
 
-        public TextFormatter(ITextFormatter formatter)
+        public TextPrinter(ITextFormatter formatter)
         {
             _formatter = formatter;
         }
@@ -35,23 +35,26 @@
             _formatter = formatter;
         }
 
-        public string Format(string input)
+        public void Print(string input)
         {
-            return _formatter.Format(input);
+            var formattedInput = _formatter.Format(input);
+            Console.WriteLine(formattedInput);
         }
     }
     
-    public class Test
+    public static class Test
     {
         public static void UsePattern()
         {
             string sampleText = "Sample Text";
 
-            var formatter = new TextFormatter(new UpperCaseFormatter());
-            Console.WriteLine("Uppercase formatting: " + formatter.Format(sampleText));
+            var printer = new TextPrinter(new UpperCaseFormatter());
+            printer.Print(sampleText); // SAMPLE TEXT
 
-            formatter.SetFormatter(new LowerCaseFormatter());
-            Console.WriteLine("Lowercase formatting: " + formatter.Format(sampleText));
+            printer.SetFormatter(new LowerCaseFormatter());
+            printer.Print(sampleText); // sample text
         }
     }
 }
+
+
