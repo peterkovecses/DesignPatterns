@@ -1,66 +1,82 @@
-﻿namespace Structural.Bridge
+﻿namespace BridgeExample;
+
+// Implementation interface
+public interface IMessageSender
 {
-    // Implementációs interfész
-    public interface IPrinter
+    void SendMessage(string urgency, string message);
+}
+
+// Implementation class
+public class SmsSender : IMessageSender
+{
+    public void SendMessage(string urgency, string message)
     {
-        void Print(string text);
-    }
-
-    // Implementációs osztály 1
-    public class ConsolePrinter : IPrinter
-    {
-        public void Print(string text)
-        {
-            Console.WriteLine("Konzol nyomtató: " + text);
-        }
-    }
-
-    // Implementációs osztály 2
-    public class FilePrinter : IPrinter
-    {
-        public void Print(string text)
-        {
-            // Itt lenne a fájlba írás logika
-            Console.WriteLine("Fájl nyomtató: " + text);
-        }
-    }
-
-    // Absztrakció osztály (alapvető működés)
-    public abstract class Message
-    {
-        protected IPrinter _printer;
-
-        public Message(IPrinter printer)
-        {
-            _printer = printer;
-        }
-
-        public abstract void SendMessage(string text);
-    }
-
-    // Kiterjesztett absztrakció osztály
-    public class TextMessage : Message
-    {
-        public TextMessage(IPrinter printer) : base(printer) { }
-
-        public override void SendMessage(string text)
-        {
-            _printer.Print(text);
-        }
-    }
-
-    public class Test
-    {
-        public static void UsePattern()
-        {
-            IPrinter consolePrinter = new ConsolePrinter();
-            IPrinter filePrinter = new FilePrinter();
-
-            Message message = new TextMessage(consolePrinter);
-            message.SendMessage("Szia Világ!");
-
-            message = new TextMessage(filePrinter);
-            message.SendMessage("Szia Világ!");
-        }
+        Console.WriteLine($"Sending SMS with {urgency} urgency: {message}");
     }
 }
+
+// Implementation class
+public class EmailSender : IMessageSender
+{
+    public void SendMessage(string urgency, string message)
+    {
+        Console.WriteLine($"Sending E-mail with {urgency} urgency: {message}");
+    }
+}
+
+// Abstraction class (basic operation)
+public abstract class Message
+{
+    protected IMessageSender _messageSender;
+    protected string _urgency;
+
+    public Message(IMessageSender messageSender, string urgency)
+    {
+        _messageSender = messageSender;
+        _urgency = urgency;
+    }
+
+    public abstract void Send(string message);
+}
+
+// Extended abstraction class
+public class StandardMessage : Message
+{
+    public StandardMessage(IMessageSender messageSender) : base(messageSender, "standard")
+    {
+    }
+
+    public override void Send(string message)
+    {
+        _messageSender.SendMessage(_urgency, message);
+    }
+}
+
+// Extended abstraction class
+public class UrgentMessage : Message
+{
+    public UrgentMessage(IMessageSender messageSender) : base(messageSender, "urgent")
+    {
+    }
+
+    public override void Send(string message)
+    {
+        _messageSender.SendMessage(_urgency, message);
+    }
+}
+
+public static class ClientCode
+{
+    public static void Test()
+    {
+        IMessageSender smsSender = new SmsSender();
+        IMessageSender emailSender = new EmailSender();
+
+        Message standardSmsMessage = new StandardMessage(smsSender);
+        standardSmsMessage.Send("Hello!");
+
+        Message urgentEmailMessage = new UrgentMessage(emailSender);
+        urgentEmailMessage.Send("Hello!");
+    }
+}
+
