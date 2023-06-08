@@ -2,7 +2,7 @@
 
 namespace Behavioral.Strategy.Example1.Resolver
 {
-    public class DeveloperSetupStrategyResolver
+    public class DeveloperSetupStrategyResolver : IDeveloperSetupStrategyResolver
     {
         public IDeveloperSetupStrategy GetStrategy(IDeveloper developer)
         {

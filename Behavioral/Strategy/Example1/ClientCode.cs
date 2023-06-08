@@ -4,11 +4,11 @@ namespace Behavioral.Strategy.Example1
 {
     public class HrService
     {
-        private readonly DeveloperSetupStrategyResolver _developerSetupStrategyResolver;
+        private readonly IDeveloperSetupStrategyResolver _developerSetupStrategyResolver;
         private const double DeveloperBaseSalary = 50000;
         public List<IDeveloper> Developers { get; set; }
 
-        public HrService(DeveloperSetupStrategyResolver strategyResolver)
+        public HrService(IDeveloperSetupStrategyResolver strategyResolver)
         {
             _developerSetupStrategyResolver = strategyResolver;
             Developers = new List<IDeveloper>();
