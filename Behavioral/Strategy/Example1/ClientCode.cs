@@ -31,21 +31,21 @@ namespace Behavioral.Strategy.Example1
 
     public class JuniorDeveloper : IDeveloper
     {
-        public string Specialization { get; set; } = default!;
+        public required string Specialization { get; set; } 
         public string? Title { get; set; }
         public double TotalSalary { get; set; }
     }
 
     public class MediorDeveloper : IDeveloper
     {
-        public string Specialization { get; set; } = default!;
+        public required string Specialization { get; set; }
         public string? Title { get; set; }
         public double TotalSalary { get; set; }
     }
 
     public class SeniorDeveloper : IDeveloper
     {
-        public string Specialization { get; set; } = default!;
+        public required string Specialization { get; set; }
         public string? Title { get; set; }
         public double TotalSalary { get; set; }
     }
