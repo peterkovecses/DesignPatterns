@@ -1,8 +1,8 @@
 ﻿namespace Structural.Decorator.Example2
 {
     public interface IOrder
-    {
-        List<string> Products { get; }
+    {        
+        List<Product> Products { get; }
 
         decimal GetSubtotal();
         decimal GetShippingCost();
@@ -11,15 +11,12 @@
 
     public class Order : IOrder
     {
-        public List<string> Products { get; } = new List<string>();
+        private const int _baseShippingCost = 15;
+        public List<Product> Products { get; } = new();
 
-        public decimal GetSubtotal()
-        {
-            // return Products.Sum(p => p.Price);
-            throw new NotImplementedException();
-        }
+        public decimal GetSubtotal() => Products.Sum(p => p.Price);
 
-        public decimal GetShippingCost() => 15;
+        public decimal GetShippingCost() => _baseShippingCost;
 
         public decimal GetTotalAmmount() => GetSubtotal() + GetShippingCost();
     }
@@ -34,7 +31,7 @@
             _order = order;
         }
 
-        public List<string> Products { get => _order.Products; }
+        public List<Product> Products => _order.Products;
 
         public virtual decimal GetSubtotal() => _order.GetSubtotal();
 
@@ -51,5 +48,10 @@
 
         public override decimal GetShippingCost() => _order.GetShippingCost() + ExpressExtraCharge;
 
+    }
+
+    public class Product
+    {
+        public int Price { get; set; }
     }
 }
