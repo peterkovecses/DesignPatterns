@@ -4,7 +4,9 @@
     {
         public PizzaDoughType DoughType { get; set; }
 
-        public static SimplePizza CreateChicagoStylePizza() => new() { DoughType = PizzaDoughType.DeepDish };
-        public static SimplePizza CreateNewYorkStylePizza() => new() { DoughType = PizzaDoughType.Thin };
+        public static SimplePizza CreateChicagoStylePizza() 
+            => new() { DoughType = PizzaDoughType.DeepDish };
+        public static SimplePizza CreateNewYorkStylePizza() 
+            => new() { DoughType = PizzaDoughType.Thin };
     }
 }
