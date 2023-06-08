@@ -2,44 +2,32 @@
 {
     public interface IPizza
     {
-        string GetDescription();
+        string Description { get; }
     }
 
     public class ItalianPizza : IPizza
     {
-        public string GetDescription()
-        {
-            return "Italian Pizza";
-        }
+        public string Description => "Italian Pizza";
     }
 
     public class AmericanPizza : IPizza
     {
-        public string GetDescription()
-        {
-            return "American Pizza";
-        }
+        public string Description => "American Pizza";
     }
 
     public interface ICoffee
     {
-        string GetDescription();
+        string Description { get; }
     }
 
     public class ItalianCofee : ICoffee
     {
-        public string GetDescription()
-        {
-            return "Italian Cofee";
-        }
+        public string Description => "Italian Cofee";
     }
 
     public class AmericanCofee : ICoffee
     {
-        public string GetDescription()
-        {
-            return "American Cofee";
-        }
+        public string Description => "American Cofee";
     }
 
     public interface IPizzaFactory
@@ -107,12 +95,18 @@
         }        
     }
 
-    // Használat:
-    //var pizzaFactory = new ItalianPizzaFactory();
-    //var coffeFactory = new AmericanCoffeeFactory();
-    //var pizzaStore = new PizzaStore(pizzaFactory, coffeFactory);
-    //IPizza pizza = pizzaStore.OrderPizza();
-    //ICoffee coffee = pizzaStore.OrderCoffee();
-    //Console.WriteLine(pizza.GetDescription()); // Italian Pizza
-    //Console.WriteLine(coffee.GetDescription()); // American Cofee
+    public static class ClientCode
+    {
+        public static void Test()
+        {
+            var pizzaStore = new PizzaStore(new ItalianPizzaFactory(), new AmericanCoffeeFactory());
+
+            IPizza pizza = pizzaStore.OrderPizza();
+            ICoffee coffee = pizzaStore.OrderCoffee();
+
+            Console.WriteLine(pizza.Description); // Italian Pizza
+            Console.WriteLine(coffee.Description); // American Cofee
+        }
+    }    
 }
+

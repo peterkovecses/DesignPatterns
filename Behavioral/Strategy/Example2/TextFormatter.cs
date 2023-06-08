@@ -45,13 +45,13 @@
     {
         public static void UsePattern()
         {
-            string sampleText = "Példa Szöveg";
+            string sampleText = "Sample Text";
 
             var formatter = new TextFormatter(new UpperCaseFormatter());
-            Console.WriteLine("Nagybetűs formázás: " + formatter.Format(sampleText));
+            Console.WriteLine("Uppercase formatting: " + formatter.Format(sampleText));
 
             formatter.SetFormatter(new LowerCaseFormatter());
-            Console.WriteLine("Kisbetűs formázás: " + formatter.Format(sampleText));
+            Console.WriteLine("Lowercase formatting: " + formatter.Format(sampleText));
         }
     }
 }

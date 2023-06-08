@@ -4,7 +4,7 @@ public class StrictCarBuilder : IEntertainmentSystemStage, IUpholsteryStage, IBo
 {
     private readonly Car _car;
 
-    // megtiltjuk a kívülről történő példányosítást
+    // external instantiation is prohibited
     private StrictCarBuilder() => _car = new();
 
     public static IBodyStage StartBuilding() => new StrictCarBuilder();
@@ -59,11 +59,11 @@ public interface IEntertainmentSystemStage
     StrictCarBuilder SetEntertainmentSystem(EntertainmentSystemType entertainmentSystemType);
 }
 
-public class ClientCode
+public static class ClientCode
 {
     public static void Test()
     {
-        // csak ebben a sorrendben működik, és az összeset meg kell hívni a Build-ig
+        // it only works in this order and all must be called until Build
         var car = StrictCarBuilder
             .StartBuilding()
             .SetBody(BodyType.Coupe)

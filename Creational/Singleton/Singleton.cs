@@ -7,8 +7,6 @@
 
         public static Singleton Instance { get { return _lazy.Value; } }
 
-        private Singleton()
-        {
-        }
+        private Singleton() { }
     }
 }

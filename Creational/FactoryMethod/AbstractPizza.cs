@@ -34,9 +34,15 @@
         Pepperoni
     }
 
-    // Client code:
-    //var random = new Random();
-    //var randomPizza = random.Next(0, 2) == 0 ? PizzaFactory.CreatePizza(PizzaType.Margerita)
-    //    : PizzaFactory.CreatePizza(PizzaType.Pepperoni);
-    //Console.WriteLine(randomPizza.Description);
+    public static class ClientCode
+    {
+        public static void Test()
+        {
+            var random = new Random();
+            var randomPizza = random.Next(0, 2) == 0 ? PizzaFactory.CreatePizza(PizzaType.Margerita)
+                : PizzaFactory.CreatePizza(PizzaType.Pepperoni);
+
+            Console.WriteLine(randomPizza.Description);
+        }
+    }
 }
