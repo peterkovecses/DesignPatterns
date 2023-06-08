@@ -1,57 +1,67 @@
-﻿namespace Structural.Decorator.Example2
+﻿namespace Structural.Decorator.Example2;
+
+public interface ISuperHero
 {
-    public interface IOrder
-    {        
-        List<Product> Products { get; }
+    int Attack { get; }
+    int Defence { get; }
+}
 
-        decimal GetSubtotal();
-        decimal GetShippingCost();
-        decimal GetTotalAmmount();
+public class SuperHero : ISuperHero
+{
+    public int Attack => 50;
+    public int Defence => 50;
+
+    public override string ToString() => $"Attack: {Attack}, Defence: {Defence}";
+}
+
+public abstract class HeroDecorator : ISuperHero
+{
+    protected ISuperHero _superHero;
+
+    protected HeroDecorator(ISuperHero superHero)
+    {
+        _superHero = superHero;
     }
 
-    public class Order : IOrder
+    public virtual int Attack => _superHero.Attack;
+    public virtual int Defence => _superHero.Defence;
+
+    public override string ToString() => $"Attack: {Attack}, Defence: {Defence}";
+}
+
+public class AttackDecorator : HeroDecorator
+{
+    public AttackDecorator(ISuperHero superHero) : base(superHero)
     {
-        private const int _baseShippingCost = 15;
-        public List<Product> Products { get; } = new();
-
-        public decimal GetSubtotal() => Products.Sum(p => p.Price);
-
-        public decimal GetShippingCost() => _baseShippingCost;
-
-        public decimal GetTotalAmmount() => GetSubtotal() + GetShippingCost();
     }
 
-    public abstract class OrderDecoratorBase : IOrder
+    public override int Attack => _superHero.Attack + 20;
+    public override int Defence => _superHero.Defence;
+}
+
+public class DeffenceDecorator : HeroDecorator
+{
+    public DeffenceDecorator(ISuperHero superHero) : base(superHero)
     {
-        protected readonly IOrder _order;
-        protected const decimal ExpressExtraCharge = 15;
-
-        public OrderDecoratorBase(IOrder order)
-        {
-            _order = order;
-        }
-
-        public List<Product> Products => _order.Products;
-
-        public virtual decimal GetSubtotal() => _order.GetSubtotal();
-
-        public virtual decimal GetShippingCost() => _order.GetShippingCost();
-
-        public virtual decimal GetTotalAmmount() => GetSubtotal() + GetShippingCost();
     }
 
-    public class OrderExpressDecorator : OrderDecoratorBase
+    public override int Attack => _superHero.Attack;
+    public override int Defence => _superHero.Defence + 20;
+}
+
+public static class ClientCode
+{
+    public static void Test()
     {
-        public OrderExpressDecorator(Order order) : base(order)
-        {
-        }
+        var superHero1 = new SuperHero();
+        var superHero2 = new AttackDecorator(superHero1);
+        var superHero3 = new AttackDecorator(superHero2);
+        var superHero4 = new DeffenceDecorator(superHero3);
 
-        public override decimal GetShippingCost() => _order.GetShippingCost() + ExpressExtraCharge;
-
-    }
-
-    public class Product
-    {
-        public int Price { get; set; }
+        Console.WriteLine(superHero1); // Attack: 50, Defence: 50
+        Console.WriteLine(superHero2); // Attack: 70, Defence: 50
+        Console.WriteLine(superHero3); // Attack: 90, Defence: 50
+        Console.WriteLine(superHero4); // Attack: 90, Defence: 70
     }
 }
+
