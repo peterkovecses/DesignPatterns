@@ -6,7 +6,11 @@ namespace Creational.Builder.Builders
     {
         public BaseEquipmentCarBuilder()
         {
-            Car = new BaseEquipmentCar();
+            Car = new Car
+            {
+                EntertainmentSystem = Enums.EntertainmentSystemType.None,
+                Upholstery = Enums.UpholsteryType.Fabric
+            };
         }
     }
 }

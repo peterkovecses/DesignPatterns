@@ -4,9 +4,10 @@ using Creational.Builder.Product;
 
 namespace Creational.Director.Builder
 {
+    // director
     public class CarDealership
     {
-        public static CarBase OrderCar(CarBuilderBase carBuilder, BodyType bodyType, Color color)
+        public static Car OrderCar(CarBuilderBase carBuilder, BodyType bodyType, Color color)
         {
             carBuilder.BuilBody(bodyType);
             carBuilder.BuildPainting(color);

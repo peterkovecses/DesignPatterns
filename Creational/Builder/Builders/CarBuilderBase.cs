@@ -3,9 +3,10 @@ using Creational.Builder.Product;
 
 namespace Creational.Builder.Builders
 {
+    // abstract builder
     public abstract class CarBuilderBase
     {
-        protected CarBase Car { get; set; } = default!;
+        protected Car Car { get; set; } = default!;
 
         public void BuilBody(BodyType bodyType)
         {
@@ -17,9 +18,10 @@ namespace Creational.Builder.Builders
             Car.Painting= color;
         }
 
-        public CarBase GetCar() 
+        public Car GetCar() 
         { 
             return Car;
         }
     }
 }
+

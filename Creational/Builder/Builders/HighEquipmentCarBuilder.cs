@@ -2,11 +2,16 @@
 
 namespace Creational.Builder.Builders
 {
+    // concrete builder
     public class HighEquipmentCarBuilder : CarBuilderBase
     {
         public HighEquipmentCarBuilder()
         {
-            Car = new HighEquipmentCar();
+            Car = new Car
+            {
+                EntertainmentSystem = Enums.EntertainmentSystemType.HiFi,
+                Upholstery = Enums.UpholsteryType.Leather
+            };
         }
     }
 }
