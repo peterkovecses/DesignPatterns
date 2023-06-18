@@ -2,6 +2,7 @@
 
 namespace Creational.Builder.Product
 {
+    // Product
     public class Car
     {
         public EntertainmentSystemType EntertainmentSystem { get; set; }
