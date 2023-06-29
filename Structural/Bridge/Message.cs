@@ -5,9 +5,9 @@ public abstract class Message
 {
     protected IMessageService _messageSender;
 
-    public Message(IMessageService messageSender, IEnumerable<string> recipients)
+    public Message(IMessageService messageService, IEnumerable<string> recipients)
     {
-        _messageSender = messageSender;
+        _messageSender = messageService;
         Recipients = recipients;
     }
 
@@ -22,8 +22,8 @@ public abstract class Message
 // Extended abstraction class
 public class SystemMessage : Message
 {
-    public SystemMessage(IMessageService messageSender, IEnumerable<string> recipients) 
-        : base(messageSender, recipients)
+    public SystemMessage(IMessageService messageService, IEnumerable<string> recipients) 
+        : base(messageService, recipients)
     {
         Sender = "System";
     }
@@ -37,8 +37,8 @@ public class SystemMessage : Message
 // Extended abstraction class
 public class UserMessage : Message
 {
-    public UserMessage(IMessageService messageSender, string sender, IEnumerable<string> recipients) 
-        : base(messageSender, recipients)
+    public UserMessage(IMessageService messageService, string sender, IEnumerable<string> recipients) 
+        : base(messageService, recipients)
     {
         Sender = sender;
     }
