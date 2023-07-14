@@ -163,10 +163,10 @@
                 Products = new List<Product>() { new Product { Price = 50 }, new Product { Price = 60 } }
             };
 
-            var minAgeHandler = new MinAgeHandler();
-            var minAmountHandler = new MinAmountHandler();
-            var discountHandler = new DiscountHandler();
-            var zipCodeHandler = new ZipCodeHandler();
+            IHandler<Order> minAgeHandler = new MinAgeHandler();
+            IHandler<Order> minAmountHandler = new MinAmountHandler();
+            IHandler<Order> discountHandler = new DiscountHandler();
+            IHandler<Order> zipCodeHandler = new ZipCodeHandler();
 
             minAgeHandler
                 .SetNext(minAmountHandler)
